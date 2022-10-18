@@ -1,0 +1,42 @@
+
+  
+<mat-card style="background-color: blue;" class="header">
+    <mat-card-header>
+        <mat-card-title>{{user}}</mat-card-title>
+      <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="account_circle" (click)="profile()"></mat-icon>
+      </mat-card-header>
+    </mat-card>
+
+    <div class="col-md-3 mx-auto my-5"  *ngFor="let data of finaltweets"> 
+    <div fxLayout="row" fxLayoutAlign="center center">
+    <mat-card class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title  (click)="profileothers(data)">{{data.username}}</mat-card-title>
+      <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>
+       {{data.tweetData}}
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button (click)="like(data)">LIKE</button>
+      <button mat-button (click)="comments(data)">COMMENTS</button>
+      <button mat-button >SHARE</button>
+        <form class="example" #myFormPost="ngForm"> 
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label >Leave a comment</mat-label>
+          <input matInput placeholder="Reply to ur friend" name="post" value="post" ngModel>
+        </mat-form-field>
+        <mat-form-field class="example-form" appearance="fill">
+          <mat-label >Tag a Friend</mat-label>
+          <input matInput placeholder="Tag" name="tag" value="tag" ngModel>
+         </mat-form-field>
+          <button mat-raised-button color="primary" (click)="post(myFormPost,data)" style="margin-top: 30px;">Post</button>
+          
+      </form>
+    </mat-card-actions>
+  </mat-card>
+</div>
+</div>

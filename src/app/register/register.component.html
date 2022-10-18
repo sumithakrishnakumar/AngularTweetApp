@@ -1,0 +1,102 @@
+
+
+<div fxLayoutAlign="center center" style="align-items: center; width: 300px; margin-left: 500px; margin-top: 30px;">
+    <mat-card fxFlex="0" style="align-content: center;">
+        <mat-toolbar color="primary">Register Page</mat-toolbar>
+        <form [formGroup] ="registerForm">
+        <form class="login-form" #myForm=ngForm>
+          <br>
+        <mat-form-field>
+            <input matInput type="text" placeholder="Firstname"
+            name="firstNmae"
+            value="firstNmae"
+            ngModel
+            required>
+          </mat-form-field>
+          <br>
+          <br>
+          <mat-form-field>
+            <input matInput placeholder="Lastname"
+            name="lastname"
+            value="lastname"
+            ngModel
+            required>
+          </mat-form-field>
+          <br>
+          <br>
+          <mat-form-field>
+            <input matInput placeholder="Username"
+            name="username"
+            value="username"
+            ngModel
+            required>
+          </mat-form-field>
+          <br>
+          <br>
+          <mat-form-field>
+            <input matInput placeholder="Email"
+            name="emailId"
+            [(ngModel)]="emailId"
+            #emailCtrl="ngModel"
+            value="emailId"
+            required>
+            <mat-error *ngIf="emailCtrl.invalid">{{getErrorMessage()}}</mat-error>
+          </mat-form-field>
+          <br>
+          <br>
+          <mat-form-field>
+            <input matInput placeholder="ContactNumber"
+            name="contactNumber"
+            [(ngModel)]="contactNumber"
+            #numCtrl="ngModel"
+            (keypress)="keyPressNumbers($event)"
+            value="contactNumber"
+            required>
+            <mat-error *ngIf="numCtrl.invalid">{{getErrorContact()}}</mat-error>
+          </mat-form-field>
+          <br>
+          <br>
+          <mat-form-field>
+            <input matInput placeholder="LoginId"
+            name="loginId"
+            value="loginId"
+            ngModel
+            required>
+          </mat-form-field>
+          <br>
+          <br>
+
+          <mat-form-field>
+            <input matInput type="password" placeholder="Password"
+            name="password"
+            [(ngModel)]="password"
+            #passCtrl="ngModel"
+            value="password"
+            required>
+            <mat-error *ngIf="passCtrl.invalid">{{getErrorPassword()}}</mat-error>
+          </mat-form-field>
+
+          <br>
+          <br>
+          <mat-form-field>
+            <input matInput placeholder="ConfirmPassword"
+            name="confirmPassword"
+            [(ngModel)]="confirmPassword"
+            #conpassCtrl="ngModel"
+            value="confirmPassword"
+            required>
+            <mat-error *ngIf="conpassCtrl.invalid">{{getErrorConfirmPassword()}}</mat-error>
+          </mat-form-field>
+          <br>
+          <br>
+        
+        </form>
+      </form>
+         <br>
+         <br>
+          <button mat-raised-button color="primary" style="margin-right:5px;" [disabled]="!myForm.valid" (click)="register('0ms','0ms',myForm.value)">register</button>
+        
+    </mat-card>
+    </div>
+    
+  
